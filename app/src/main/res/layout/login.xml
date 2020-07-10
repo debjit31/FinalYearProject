@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ED7474"
+    tools:context=".login">
+
+    <TextView
+        android:id="@+id/headingTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/centreLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="45dp"
+        android:text="Login"
+        android:textSize="45sp"
+        android:textStyle="bold" />
+
+
+    <RelativeLayout
+        android:id="@+id/centreLayout"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="5dp"
+        android:background="@drawable/border_view">
+
+        <!--Email Layout-->
+        <RelativeLayout
+            android:id="@+id/emialLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp">
+
+
+            <EditText
+                android:id="@+id/emailIN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:textSize="26sp" />
+        </RelativeLayout>
+
+        <!--pass Layout-->
+        <RelativeLayout
+            android:id="@+id/passwordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emialLayout"
+            android:layout_margin="10dp"
+            android:padding="10dp">
+
+
+            <EditText
+                android:id="@+id/passIN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textSize="26sp" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_below="@+id/centreLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_margin="30dp"
+        android:padding="20dp"
+        android:background="@drawable/border_view" />
+
+
+    <TextView
+        android:id="@+id/linkSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Don't have a Account ? Register Here"/>
+
+
+</RelativeLayout>
