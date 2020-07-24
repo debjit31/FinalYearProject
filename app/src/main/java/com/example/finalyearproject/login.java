@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class login extends AppCompatActivity {
     private TextView signUpLink;
     private EditText email, password;
     private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class login extends AppCompatActivity {
 
         email = (EditText) findViewById(R.id.emailIN);
         password = (EditText) findViewById(R.id.passIN);
+        progressBar = (ProgressBar) findViewById(R.id.progessBar);
 
         login = (Button) findViewById(R.id.loginBtn);
 
@@ -53,19 +56,23 @@ public class login extends AppCompatActivity {
     }
     void login_user()
     {
+        progressBar.setVisibility(View.VISIBLE);
         String mEmail = email.getText().toString().trim();
         String mPassword = password.getText().toString().trim();
 
         if (TextUtils.isEmpty(mEmail) || TextUtils.isEmpty(mPassword)) {
             Toast.makeText(this, "Email and password cannot be empty!!!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.INVISIBLE);
         }else{
             mAuth.signInWithEmailAndPassword(mEmail,mPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        progressBar.setVisibility(View.INVISIBLE);
                         startActivity(new Intent(com.example.finalyearproject.login.this, Home.class));
                         Toast.makeText(login.this, "Welcome back!!!", Toast.LENGTH_SHORT).show();
                     }else{
+                        progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(login.this, "Failed to Login.\n" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }

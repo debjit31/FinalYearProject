@@ -1,15 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".DonateFragment">
 
-    <TextView
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textStyle="bold"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="invisible"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Donate Layout"/>
+        android:layout_centerInParent="true"/>
+
+
+    <ScrollView
+        android:id="@+id/userDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EE8D8D">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <!--Header Layout-->
+            <LinearLayout
+                android:id="@+id/titleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F26969"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_margin="55dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:padding="10dp"
+                    android:text="Donate"
+                    android:textSize="60sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="9dp"
+                android:orientation="vertical">
+
+                <!--Name Field-->
+                <EditText
+                    android:id="@+id/userName"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--Email-->
+                <EditText
+                    android:id="@+id/userEmail"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--Password-->
+                <EditText
+                    android:id="@+id/userPassword"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--Confirm Password-->
+                <EditText
+                    android:id="@+id/userConfirmPassword"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--DOB-->
+                <EditText
+                    android:id="@+id/userDOB"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="DOB"
+                    android:inputType="date"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--Phone Number-->
+                <EditText
+                    android:id="@+id/userPhoneNumber"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="Phone Number"
+                    android:inputType="phone"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--State-->
+                <EditText
+                    android:id="@+id/userState"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="State"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--City-->
+                <EditText
+                    android:id="@+id/userCity"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="City"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--Street-->
+                <EditText
+                    android:id="@+id/userStreet"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="Street"
+                    android:inputType="textPostalAddress"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <!--Aadhar ID-->
+                <EditText
+                    android:id="@+id/userAadharId"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="13dp"
+                    android:background="#fff"
+                    android:hint="Aadhar ID"
+                    android:inputType="number"
+                    android:padding="15dp"
+                    android:textColor="#9ED7D9"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/signUpUser"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/holo_red_light"
+                    android:src="@drawable/ic_add"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 
 </RelativeLayout>

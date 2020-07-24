@@ -7,6 +7,13 @@
     android:background="#ED7474"
     tools:context=".login">
 
+    <ProgressBar
+        android:id="@+id/progessBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
     <TextView
         android:id="@+id/headingTV"
         android:layout_width="wrap_content"
