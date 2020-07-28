@@ -11,33 +11,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class splashScreen extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        mAuth = FirebaseAuth.getInstance();
+        showSplash();
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if(mAuth.getCurrentUser() != null){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    startActivity(new Intent(splashScreen.this, Home.class));
-                    finish();
-
-                }
-            }, 1500);
-        }else{
-            showSplash();
-        }
     }
     void showSplash(){
         new Handler().postDelayed(new Runnable() {
@@ -48,6 +28,6 @@ public class splashScreen extends AppCompatActivity {
                 finish();
 
             }
-        }, 2500);
+        }, 2000);
     }
 }

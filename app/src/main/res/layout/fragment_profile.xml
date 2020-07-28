@@ -33,24 +33,45 @@
                 android:background="#DF6060"
                 android:padding="14dp">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profilePicture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="96dp"
                     android:layout_centerInParent="true"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:layout_height="96dp"
+                    android:src="@drawable/bimage"
+                    app:civ_border_width="2dp"
+                    android:scaleType="centerCrop"
+                    app:civ_border_color="#FF000000"/>
 
                 <Button
                     android:id="@+id/uploadButton"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_toRightOf="@+id/profilePicture"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="Upload"
+                    android:padding="10dp"
+                    android:visibility="invisible"
+                    android:textColor="#ffffff"
+                    android:background="#17A9D4" />
+
+                <Button
+                    android:id="@+id/chooseImage"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/profilePicture"
+                    android:layout_below="@+id/uploadButton"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="25dp"
-                    android:text="UPLOAD"
+                    android:text="Choose Image"
                     android:visibility="invisible"
+                    android:padding="10dp"
                     android:textColor="#fff"
-                    android:background="@drawable/border_view" />
+                    android:background="#17A9D4" />
+
 
                 <TextView
                     android:id="@+id/userName"
@@ -61,7 +82,7 @@
                     android:layout_marginTop="10dp"
                     android:text="My Name"
                     android:textColor="#fff"
-                    android:textSize="20dp" />
+                    android:textSize="15sp" />
 
 
             </RelativeLayout>
@@ -211,8 +232,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@+id/emailImage"
-                        android:text="user@gmail.com"
-                        android:textSize="18sp"
+                        android:text="----------"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
@@ -232,7 +253,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/user_email" />
+                        android:src="@drawable/user_phonr" />
 
                     <TextView
                         android:id="@+id/userPhoneTV"
@@ -257,8 +278,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="#fff"
-                android:padding="10dp"
+                android:background="@drawable/border_view"
+                android:padding="20dp"
                 android:text="Logout"
                 android:textAllCaps="false"
                 android:textColor="#DF6060"

@@ -54,6 +54,17 @@ public class login extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mAuth.getCurrentUser() != null)
+        {
+            // logged in
+            startActivity(new Intent(login.this, Home.class));
+        }
+    }
+
     void login_user()
     {
         progressBar.setVisibility(View.VISIBLE);
