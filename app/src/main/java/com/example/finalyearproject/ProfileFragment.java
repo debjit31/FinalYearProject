@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -115,7 +116,7 @@ public class ProfileFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         UID = mAuth.getCurrentUser().getUid();
         mdb = FirebaseDatabase.getInstance().getReference().child("users");
-        mStorageRef = FirebaseStorage.getInstance().getReference("DP");
+        mStorageRef = FirebaseStorage.getInstance().getReference("DP/" + UID);
 
         mdb.child(UID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -123,7 +124,8 @@ public class ProfileFragment extends Fragment {
                 uname.setText(snapshot.child("name").getValue().toString());
                 uemail.setText(snapshot.child("email").getValue().toString());
                 if(snapshot.child("profilepicture").exists()){
-                    Picasso.get().load(snapshot.child("profilepicture").getValue().toString()).into(profilePicture);
+                    //Picasso.get().load(snapshot.child("profilepicture").getValue().toString()).into(profilePicture);
+                    Glide.with(getActivity()).load(snapshot.child("profilepicture").getValue().toString()).into(profilePicture);
                 }
                 progressBar.setVisibility(View.INVISIBLE);
             }
@@ -157,9 +159,8 @@ public class ProfileFragment extends Fragment {
     // uploading to Firebase storage and storing imageuri to firebase realtime database
     public void uploadImage() {
         if (imageUri != null) {
+            progressBar.setVisibility(View.VISIBLE);
             final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
-
-
             mUploadTask = fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -168,6 +169,7 @@ public class ProfileFragment extends Fragment {
                         public void onSuccess(Uri uri) {
                             Upload upload = new Upload("Profile Image", uri.toString());
                             mdb.child(UID).child(upload.getmName()).setValue(upload.getmImageURl());
+                            progressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(getActivity(), "Upload Successfull", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -175,13 +177,13 @@ public class ProfileFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                    progressBar.setProgress((int) progress);
+                    progressBar.setVisibility(View.VISIBLE);
                 }
             });
         } else {
@@ -204,7 +206,8 @@ public class ProfileFragment extends Fragment {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
-            Picasso.get().load(imageUri).into(profilePicture);
+            //Picasso.get().load(imageUri).into(profilePicture);
+            Glide.with(getActivity()).load(imageUri).into(profilePicture);
         }
     }
 

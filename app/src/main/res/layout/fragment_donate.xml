@@ -1,215 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".DonateFragment">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:visibility="invisible"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"/>
-
-
-    <ScrollView
-        android:id="@+id/userDetails"
+    <!--Donor Form Layout-->
+    <LinearLayout
+        android:id="@+id/donorFormLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EE8D8D">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <LinearLayout
-            android:layout_height="match_parent"
+        <!--Name Layout-->
+        <RelativeLayout
+            android:id="@+id/nameLayout"
             android:layout_width="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:padding="14dp">
 
-            <!--Header Layout-->
-            <LinearLayout
-                android:id="@+id/titleLayout"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/nameDisplayTV"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#F26969"
-                android:orientation="vertical">
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Name : "
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_margin="55dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:padding="10dp"
-                    android:text="Donate"
-                    android:textSize="60sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/nameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/nameDisplayTV"
+                android:text=""
+                android:textSize="30sp" />
 
+        </RelativeLayout>
 
-            </LinearLayout>
+        <!--Age Layout(Editable)-->
+        <RelativeLayout
+            android:id="@+id/ageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="9dp"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/ageDisplayTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Age : "
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-                <!--Name Field-->
-                <EditText
-                    android:id="@+id/userName"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="Name"
-                    android:inputType="textPersonName"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+            <EditText
+                android:id="@+id/ageTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/ageDisplayTV"
+                android:textSize="30sp" />
 
-                <!--Email-->
-                <EditText
-                    android:id="@+id/userEmail"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+        </RelativeLayout>
 
-                <!--Password-->
-                <EditText
-                    android:id="@+id/userPassword"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+        <!--Blood Grp-->
+        <RelativeLayout
+            android:id="@+id/bloodGrpLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
 
-                <!--Confirm Password-->
-                <EditText
-                    android:id="@+id/userConfirmPassword"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+            <TextView
+                android:id="@+id/bGrpDisplayTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="\tBlood\nGroup : "
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-                <!--DOB-->
-                <EditText
-                    android:id="@+id/userDOB"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="DOB"
-                    android:inputType="date"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+            <!--Make Spinner A+, B+, AB+, O+, A-, B-, AB-, O- -->
+            <EditText
+                android:id="@+id/bgrpTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/bGrpDisplayTV"
+                android:textSize="30sp" />
 
-                <!--Phone Number-->
-                <EditText
-                    android:id="@+id/userPhoneNumber"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="Phone Number"
-                    android:inputType="phone"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+        </RelativeLayout>
 
-                <!--State-->
-                <EditText
-                    android:id="@+id/userState"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="State"
-                    android:inputType="text"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+        <!--Phone Number-->
+        <RelativeLayout
+            android:id="@+id/phoneNumberLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
 
-                <!--City-->
-                <EditText
-                    android:id="@+id/userCity"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="City"
-                    android:inputType="text"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+            <TextView
+                android:id="@+id/pNumberDisplayTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Contact \n \t \t No :-  : "
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-                <!--Street-->
-                <EditText
-                    android:id="@+id/userStreet"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="Street"
-                    android:inputType="textPostalAddress"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+            <EditText
+                android:id="@+id/contactEd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/pNumberDisplayTV"
+                android:textSize="30sp" />
 
-                <!--Aadhar ID-->
-                <EditText
-                    android:id="@+id/userAadharId"
-                    android:layout_width="360dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="13dp"
-                    android:background="#fff"
-                    android:hint="Aadhar ID"
-                    android:inputType="number"
-                    android:padding="15dp"
-                    android:textColor="#9ED7D9"
-                    android:textSize="25sp" />
+        </RelativeLayout>
 
-                <ImageButton
-                    android:id="@+id/signUpUser"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="6dp"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@android:color/holo_red_light"
-                    android:src="@drawable/ic_add"/>
+        <RelativeLayout
+            android:id="@+id/imagelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+
+            <Button
+                android:id="@+id/selectImageButtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="35dp"
+                android:padding="10dp"
+                android:text="Upload"
+                android:textAllCaps="false"
+                android:textSize="30sp" />
 
 
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/selectedImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/selectImageButtn"
+                android:src="@drawable/sample_image"
+                tools:ignore="UnknownId" />
 
-        </LinearLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/upload"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:padding="10dp"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
-    </ScrollView>
-
-
-</RelativeLayout>
+</ScrollView>

@@ -43,13 +43,15 @@ public class login extends AppCompatActivity {
         signUpLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(login.this, signup.class));
+                Intent i = new Intent(login.this, signup.class);
+                startActivity(i);
+//                startActivity(new Intent(login.this, signup.class));
             }
         });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view){
                 login_user();
             }
         });
