@@ -54,6 +54,7 @@ public class ProfileFragment extends Fragment {
     private ImageView userPhoneupdate;
     private ImageView userEmailupdate;
     private Uri imageUri;
+    private TextView userBloodGroup, userPhoneNumber, userDonations, userRatings;
 
     private StorageReference mStorageRef;
 
@@ -72,9 +73,13 @@ public class ProfileFragment extends Fragment {
         uemail = v.findViewById(R.id.userEmailTV);
         uphoneNumber = v.findViewById(R.id.userPhoneTV);
         progressBar = v.findViewById(R.id.progress_circular);
+        userDonations = v.findViewById(R.id.donationsmadeTV);
+        userRatings = v.findViewById(R.id.ratingsTV);
+        userBloodGroup = v.findViewById(R.id.bloodGroupTV);
         profilePicture = v.findViewById(R.id.profilePicture);
         upload = v.findViewById(R.id.uploadButton);
         choose = v.findViewById(R.id.chooseImage);
+        userPhoneNumber = v.findViewById(R.id.userPhoneTV);
         userPhoneupdate = v.findViewById(R.id.phoneImage);
         userEmailupdate = v.findViewById(R.id.emailImage);
 
@@ -126,6 +131,28 @@ public class ProfileFragment extends Fragment {
                 if(snapshot.child("profilepicture").exists()){
                     //Picasso.get().load(snapshot.child("profilepicture").getValue().toString()).into(profilePicture);
                     Glide.with(getActivity()).load(snapshot.child("profilepicture").getValue().toString()).into(profilePicture);
+                }
+                if(snapshot.child("blood_grp").exists()){
+                    userBloodGroup.setText(snapshot.child("blood_grp").getValue().toString());
+                }
+                else{
+                    userBloodGroup.setText("Not Available!!");
+                }
+                if(snapshot.child("contact").exists()){
+                    userPhoneNumber.setText(snapshot.child("contact").getValue().toString());
+                }
+                else{
+                    userPhoneNumber.setText("Not Available!!!");
+                }
+                if(snapshot.child("donation_count").exists()){
+                    userDonations.setText(snapshot.child("donation_count").getValue().toString());
+                }else{
+                    userDonations.setText("Not Available");
+                }
+                if(snapshot.child("userrating").exists()){
+                    userRatings.setText(snapshot.child("userrating").getValue().toString());
+                }else{
+                    userRatings.setText("Not Available!!");
                 }
                 progressBar.setVisibility(View.INVISIBLE);
             }

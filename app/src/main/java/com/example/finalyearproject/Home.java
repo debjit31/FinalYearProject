@@ -35,8 +35,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private Toolbar toolbar;
     private FirebaseAuth mAuth;
     private DatabaseReference mdb;
-    private String uid, name, email;
 
+    private String uid, name, email;
+    private DatabaseReference mdb2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             add_todatabase(uid, name, email);
         }
 
-
         mAuth = FirebaseAuth.getInstance();
 
         toolbar = findViewById(R.id.toolbar);
@@ -62,7 +62,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = findViewById(R.id.nav_view);
         update_userDetails(navigationView);
 
-
+        // Hamburger anim
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);

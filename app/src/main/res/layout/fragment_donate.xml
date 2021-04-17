@@ -8,12 +8,21 @@
     tools:context=".DonateFragment">
 
     <!--Donor Form Layout-->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/donorFormLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp">
+
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:tooltipText="Please Wait!!!!"
+            android:textAlignment="center"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
 
         <!--Name Layout-->
         <RelativeLayout
@@ -41,12 +50,13 @@
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/nameDisplayTV"
                 android:text=""
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
         <!--Age Layout(Editable)-->
         <RelativeLayout
+            android:layout_below="@+id/nameLayout"
             android:id="@+id/ageLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginLeft="30dp"
+                android:inputType="number"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/ageDisplayTV"
                 android:textSize="30sp" />
@@ -76,6 +87,7 @@
 
         <!--Blood Grp-->
         <RelativeLayout
+            android:layout_below="@+id/ageLayout"
             android:id="@+id/bloodGrpLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,8 +103,8 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
-            <!--Make Spinner A+, B+, AB+, O+, A-, B-, AB-, O- -->
-            <EditText
+            <!--Make Spinner  O+, O- -->
+            <Spinner
                 android:id="@+id/bgrpTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,6 +118,7 @@
 
         <!--Phone Number-->
         <RelativeLayout
+            android:layout_below="@+id/bloodGrpLayout"
             android:id="@+id/phoneNumberLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,13 +140,78 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginLeft="15dp"
+                android:inputType="phone"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/pNumberDisplayTV"
                 android:textSize="30sp" />
 
         </RelativeLayout>
 
+        <!--Adddress-->
         <RelativeLayout
+            android:layout_below="@+id/phoneNumberLayout"
+            android:id="@+id/addressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+
+            <TextView
+                android:id="@+id/addressDisplayTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Address : - "
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/addressEd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="15dp"
+                android:inputType="textPostalAddress"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/addressDisplayTV"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+
+        <!--Landmark-->
+        <RelativeLayout
+            android:layout_below="@+id/addressLayout"
+            android:id="@+id/landmarkLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+
+            <TextView
+                android:id="@+id/landmarkDisplayTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Landmark : - "
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/landmarkEd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="15dp"
+                android:inputType="textPostalAddress"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/landmarkDisplayTV"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+
+        <!--Image select layout-->
+        <RelativeLayout
+            android:layout_below="@+id/landmarkLayout"
             android:id="@+id/imagelayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -144,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="55dp"
                 android:padding="10dp"
                 android:text="Upload"
                 android:textAllCaps="false"
@@ -153,8 +231,8 @@
 
             <ImageView
                 android:id="@+id/selectedImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/selectImageButtn"
@@ -165,6 +243,8 @@
         </RelativeLayout>
 
         <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/imagelayout"
             android:id="@+id/upload"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -175,7 +255,7 @@
             android:textAllCaps="false"
             android:textSize="30sp"
             android:textStyle="bold" />
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </ScrollView>
