@@ -1,8 +1,20 @@
 package com.example.finalyearproject;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +31,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,28 +83,8 @@ public class DonateFragment extends Fragment {
     private EditText mAge, mContact, mAddress, mLandmark;
     private Spinner mBloodgGrp;
     private String bgrp;
+//    private FusedLocationProviderClient mFusedLocationPrividerClient;
 
-    //@Override
-//    public void onStart() {
-//        super.onStart();
-//        FirebaseAuth tmpAuth = FirebaseAuth.getInstance();
-//        String userId = tmpAuth.getCurrentUser().getUid();
-//        DatabaseReference tmpDbRef = FirebaseDatabase.getInstance().getReference().child("users");
-//        tmpDbRef.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                String status = snapshot.child("requestFiled").getValue().toString();
-//                if(status == "true"){
-//                    startActivity(new Intent(getContext(), donor_status.class));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -113,6 +114,7 @@ public class DonateFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 bgrp = adapterView.getItemAtPosition(i).toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -139,17 +141,17 @@ public class DonateFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // function to upload the user basic information and the prescription image to database
-                if(mUploadTask != null && mUploadTask.isInProgress()){
+                if (mUploadTask != null && mUploadTask.isInProgress()) {
                     Toast.makeText(getActivity(), "Already Uploading......", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     progressBar.setVisibility(View.VISIBLE);
                     add_to_storage();
                 }
-
             }
         });
         return root;
     }
+
     public void add_to_storage() {
         if (ImageUri != null) {
             final StorageReference fileReference = mStorage.child(System.currentTimeMillis() + "." + getFileExtension(ImageUri));
@@ -181,6 +183,7 @@ public class DonateFragment extends Fragment {
             });
         }
     }
+
     // method to select image from gallery
     public void select_from_gallery() {
         Intent galleryIntent = new Intent();
@@ -188,6 +191,7 @@ public class DonateFragment extends Fragment {
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, GalleryPick);
     }
+
     // overriden method to load the selected image in the imageview
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -198,6 +202,7 @@ public class DonateFragment extends Fragment {
             myImage.setImageURI(ImageUri);
         }
     }
+
     // method to get the image file extension
     public String getFileExtension(Uri imageUri) {
         ContentResolver contentResolver = getActivity().getContentResolver();
@@ -206,21 +211,39 @@ public class DonateFragment extends Fragment {
 
     }
 
-    public void updateUser()
-    {
+    public void updateUser() {
         String uid = mAuth.getCurrentUser().getUid();
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("users");
         dbRef.child(uid).child("blood_grp").setValue(bgrp);
         dbRef.child(uid).child("contact").setValue(mContact.getText().toString());
         dbRef.child(uid).child("requestFiled").setValue("true");
-        Toast.makeText(getActivity(), mContact.getText().toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), mContact.getText().toString(), Toast.LENGTH_SHORT).show();
         Intent successIntent = new Intent(getActivity(), donor_status.class);
+        successIntent.putExtra("bloodgrp", bgrp);
         startActivity(successIntent);
 
     }
 
+    //@Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        if(requestCode == 100 && grantResults.length > 0 && (grantResults[0] + grantResults[1] == PackageManager.PERMISSION_GRANTED)){
+//            getCurrentLocation();
+//        }else{
+//            Toast.makeText(getActivity(), "Permissions are not granted!!!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+
     public void register_donor(String name, String age, String address, String landmark, String fileUrl, String bgrp, String contactNo) {
         if (Integer.parseInt(age) >= 18) {
+//            mFusedLocationPrividerClient = LocationServices.getFusedLocationProviderClient(getActivity());
+//            if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+//                getCurrentLocation();
+//            }else{
+//                ActivityCompat.requestPermissions(getActivity(),
+//                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+//                                Manifest.permission.ACCESS_COARSE_LOCATION},
+//                        100);
+//            }
             String currUser = mAuth.getCurrentUser().getUid();
             DatabaseReference db1 = FirebaseDatabase.getInstance().getReference().child("donors").child(bgrp);
             HashMap<String, String> donorRequestMap = new HashMap<String, String>();
@@ -244,19 +267,57 @@ public class DonateFragment extends Fragment {
                         mContact.setText("");
                         myImage.setImageResource(R.drawable.sample_image);
                         //startActivity(new Intent(getActivity(), donor_status.class));
-                    }else{
+                    } else {
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(getActivity(), "Some Error Occurred!!!!", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
 //            startActivity(new Intent(getActivity(), donor_status.class));
-        }
-        else {
+        } else {
             progressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(getActivity(), "You must be at least 18 years", Toast.LENGTH_LONG).show();
         }
     }
+
+//    @SuppressLint("MissingPermission")
+//    private void getCurrentLocation() {
+//        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+//        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+//            mFusedLocationPrividerClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Location> task) {
+//                    Location location = task.getResult();
+//                    if( location != null ){
+//                        Log.i("Latitude : ", String.valueOf(location.getLatitude()));
+//                        Log.i("Longitude : ", String.valueOf(location.getLongitude()));
+//                    }else{
+//                        final LocationRequest locationRequest = new LocationRequest()
+//                                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+//                                .setInterval(10000)
+//                                .setFastestInterval(1000)
+//                                .setNumUpdates(1);
+//                        LocationCallback locationCallback = new LocationCallback(){
+//                            @Override
+//                            public void onLocationResult(LocationResult locationResult) {
+//                                Location location1 = locationResult.getLastLocation();
+//                                Log.i("Latitude : ", String.valueOf(location1.getLatitude()));
+//                                Log.i("Longitude : ", String.valueOf(location1.getLongitude()));
+//                            }
+//                        };
+//                        mFusedLocationPrividerClient.requestLocationUpdates(locationRequest,
+//                                locationCallback, Looper.myLooper());
+//
+//                    }
+//                }
+//            });
+//        }else{
+//            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+//                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+//        }
+//
+//    }
+
     // utility function to prefetch user name from database
     public void utility() {
         progressBar.setVisibility(View.VISIBLE);
