@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
-    android:background="#FFFFFF">
+    android:padding="6dp"
+    android:background="@drawable/rounddetails">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,32 +16,73 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
+            android:fontFamily="@font/cambay"
             android:text="Dummy Name"
             android:textAlignment="textStart"
             android:textColor="#111111"
             android:textSize="25sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/contact_layout"
-            android:layout_width="match_parent"
+        <RelativeLayout
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:text="Dummy date"
-            android:textAlignment="textStart"
-            android:textColor="#111111"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:layout_width="wrap_content">
 
-        <TextView
-            android:id="@+id/age_layout"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/contactTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:fontFamily="@font/cambay"
+                android:text="Contact No :- "
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/contact_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toRightOf="@+id/contactTV"
+                android:fontFamily="@font/cambay"
+                android:text="Dummy date"
+                android:textAlignment="textStart"
+                android:textColor="#111111"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:text="Dummy age"
-            android:textAlignment="textStart"
-            android:textColor="#111111"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:layout_width="wrap_content">
+
+            <TextView
+                android:id="@+id/ageTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="70dp"
+                android:fontFamily="@font/cambay"
+                android:text="Age :- "
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/age_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toRightOf="@+id/ageTV"
+                android:fontFamily="@font/cambay"
+                android:text="Dummy age"
+                android:textAlignment="textStart"
+                android:textColor="#111111"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
     </LinearLayout>
 </RelativeLayout>

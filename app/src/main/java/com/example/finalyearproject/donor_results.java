@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class donor_results extends AppCompatActivity {
         setContentView(R.layout.activity_donor_results);
 
         mBloodGrp = getIntent().getStringExtra("bloodgrp");
+        Log.i("blood", mBloodGrp);
         final ProgressDialog loading = ProgressDialog.show(this,"Loading","Please wait");
 
 
@@ -79,9 +81,9 @@ public class donor_results extends AppCompatActivity {
             mContact.setText(contact);
         }
 
-        public void setAge(int age) {
+        public void setAge(String age) {
             TextView mAge = (TextView) mView.findViewById(R.id.age_layout);
-            mAge.setText(String.valueOf(age));
+            mAge.setText(age);
         }
     }
 }
