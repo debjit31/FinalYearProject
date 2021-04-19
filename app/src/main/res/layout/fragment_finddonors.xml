@@ -6,9 +6,20 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
+    <TextView
+        android:id="@+id/bannerTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp"
+        android:fontFamily="@font/cambay"
+        android:gravity="center_horizontal"
+        android:text="Apply a Blood Group filter"
+        android:textSize="24sp" />
+
+
     <RelativeLayout
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/ageLayout"
+        android:layout_below="@+id/bannerTV"
         android:id="@+id/bloodGrpLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,8 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:text="\tBlood\nGroup : "
-            android:textSize="30sp"
+            android:fontFamily="@font/cambay"
+            android:text="Blood Group : "
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <!--Make Spinner  O+, O- -->
@@ -44,9 +56,12 @@
         android:layout_below="@+id/bloodGrpLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/cambay"
         android:padding="10dp"
         android:text="Fetch"
         android:textAllCaps="false"
         android:textSize="30sp" />
+
+
 
 </RelativeLayout>

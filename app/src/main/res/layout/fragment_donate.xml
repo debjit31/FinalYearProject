@@ -37,8 +37,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/cambay"
                 android:text="Name : "
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -68,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/cambay"
                 android:text="Age : "
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -99,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/cambay"
                 android:text="\tBlood\nGroup : "
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -130,6 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/cambay"
                 android:text="Contact \n \t \t No :-  : "
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -161,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/cambay"
                 android:text="Address : - "
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -192,6 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/cambay"
                 android:text="Landmark : - "
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -223,6 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="55dp"
+                android:fontFamily="@font/cambay"
                 android:padding="10dp"
                 android:text="Upload"
                 android:textAllCaps="false"
@@ -243,13 +250,14 @@
         </RelativeLayout>
 
         <Button
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/imagelayout"
             android:id="@+id/upload"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/imagelayout"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
+            android:fontFamily="@font/cambay"
             android:padding="10dp"
             android:text="Submit"
             android:textAllCaps="false"
