@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -34,6 +35,7 @@ public class donor_status extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mdb;
     private String bloodGroup;
+    private Button editApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class donor_status extends AppCompatActivity {
                     100);
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(requestCode == 100 && grantResults.length > 0 && (grantResults[0] + grantResults[1] == PackageManager.PERMISSION_GRANTED)){
@@ -61,6 +64,7 @@ public class donor_status extends AppCompatActivity {
             Toast.makeText(this, "Permissions are not granted!!!", Toast.LENGTH_SHORT).show();
         }
     }
+
     @SuppressLint("MissingPermission")
     private void getCurrentLocation() {
         mAuth = FirebaseAuth.getInstance();

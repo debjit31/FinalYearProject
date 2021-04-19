@@ -96,6 +96,7 @@ public class DonateFragment extends Fragment {
         mBloodgGrp = root.findViewById(R.id.bgrpTV);
         mAddress = root.findViewById(R.id.addressEd);
         mLandmark = root.findViewById(R.id.landmarkEd);
+
         List<String> bloodgroups = new ArrayList<String>();
         bloodgroups.add("A+");
         bloodgroups.add("B+");
