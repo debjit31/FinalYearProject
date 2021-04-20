@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".donor_results">
 
-
     <ProgressBar
         android:id="@+id/progress_circular"
         android:layout_width="wrap_content"

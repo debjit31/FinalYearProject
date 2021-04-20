@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D4D4E4"
+    android:orientation="vertical"
+    tools:context=".DonorDetailsActivity">
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Donor Details"
+        android:textAllCaps="false"
+        android:textSize="38sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_below="@+id/header"
+        android:id="@+id/nameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/nameBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:fontFamily="cursive"
+            android:text="Name :- "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/nameField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/nameBanner"
+            android:fontFamily="cursive"
+            android:text="Dummy Text"
+            android:textAllCaps="false"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/nameLayout"
+        android:id="@+id/ageLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/ageBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:fontFamily="cursive"
+            android:text="Age :- "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/ageField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/ageBanner"
+            android:fontFamily="cursive"
+            android:text="Dummy Text"
+            android:textAllCaps="false"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/ageLayout"
+        android:id="@+id/bloodLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/bloodBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:fontFamily="cursive"
+            android:text="Blood Grp :- "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/bloodGrpField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/bloodBanner"
+            android:fontFamily="cursive"
+            android:text="Dummy Text"
+            android:textAllCaps="false"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/bloodLayout"
+        android:id="@+id/addressLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/addressBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:fontFamily="cursive"
+            android:text="Address :- "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/addressField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/addressBanner"
+            android:fontFamily="cursive"
+            android:text="Dummy Text"
+            android:textAllCaps="false"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/addressLayout"
+        android:id="@+id/landmarkLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/landmarkBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:fontFamily="cursive"
+            android:text="Landmark :- "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/landmarkField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/landmarkBanner"
+            android:fontFamily="cursive"
+            android:text="Dummy Text"
+            android:textAllCaps="false"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/landmarkLayout"
+        android:id="@+id/contactLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/contactBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:fontFamily="cursive"
+            android:text="Phone :- "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/contactField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/contactBanner"
+            android:fontFamily="cursive"
+            android:text="Dummy Text"
+            android:textAllCaps="false"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_below="@+id/contactLayout"
+        android:id="@+id/callBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/ic_baseline_call_24" />
+
+</RelativeLayout>

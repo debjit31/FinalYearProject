@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,10 +56,20 @@ public class donor_results extends AppCompatActivity {
                         mdb
                 ){
             @Override
-            protected void populateViewHolder(DonorViewHolder donorViewHolder, Donor donor, int i) {
+            protected void populateViewHolder(DonorViewHolder donorViewHolder, Donor donor, final int position) {
                 donorViewHolder.setName(donor.getName());
                 donorViewHolder.setContact(donor.getContact());
                 donorViewHolder.setAge(donor.getAge());
+                donorViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String userId = getRef(position).getKey();
+                        Intent intent = new Intent(donor_results.this, DonorDetailsActivity.class);
+                        intent.putExtra("userId", userId);
+                        intent.putExtra("bloodGrp", mBloodGrp);
+                        startActivity(intent);
+                    }
+                });
             }
         };
         donorResults.setAdapter(firebaseRecyclerAdapter);
