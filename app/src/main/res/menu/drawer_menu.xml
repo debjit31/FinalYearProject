@@ -3,24 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools" >
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/welcomeScreen"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Welcome"/>
+
+        <item
             android:id="@+id/nav_message"
-            android:icon="@drawable/ic_message"
-            android:title="Donate" />
+            android:icon="@drawable/ic_baseline_add_24"
+            android:title="Apply to be a Donor" />
 
         <item
             android:id="@+id/nav_chat"
-            android:icon="@drawable/ic_chat"
+            android:icon="@drawable/ic_baseline_people_24"
             android:title="Nearby Donors" />
 
         <item
             android:id="@+id/nav_share"
-            android:icon="@drawable/ic_share"
-            android:title="History" />
+            android:icon="@drawable/ic_baseline_notifications_24"
+            android:title="Feed" />
 
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_profile"
-            android:title="Account" />
-
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="My Profile" />
     </group>
 </menu>

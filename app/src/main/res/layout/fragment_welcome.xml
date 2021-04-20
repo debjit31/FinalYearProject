@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeFragment">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+         android:src="@drawable/blood_donation"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You’re somebody’s type"
+        android:textSize="40sp"
+        android:layout_below="@+id/image"
+        android:layout_marginTop="15dp"
+        android:fontFamily="cursive"
+        android:textColor="@android:color/holo_red_light"
+        android:gravity="center"/>
+
+</RelativeLayout>
