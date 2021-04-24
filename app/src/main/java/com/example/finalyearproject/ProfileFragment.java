@@ -74,7 +74,7 @@ public class ProfileFragment extends Fragment {
         uphoneNumber = v.findViewById(R.id.userPhoneTV);
         progressBar = v.findViewById(R.id.progress_circular);
         userDonations = v.findViewById(R.id.donationsmadeTV);
-        userRatings = v.findViewById(R.id.ratingsTV);
+        //userRatings = v.findViewById(R.id.ratingsTV);
         userBloodGroup = v.findViewById(R.id.bloodGroupTV);
         profilePicture = v.findViewById(R.id.profilePicture);
         upload = v.findViewById(R.id.uploadButton);
@@ -149,11 +149,11 @@ public class ProfileFragment extends Fragment {
                 }else{
                     userDonations.setText("Not Available");
                 }
-                if(snapshot.child("userrating").exists()){
+                /*if(snapshot.child("userrating").exists()){
                     userRatings.setText(snapshot.child("userrating").getValue().toString());
                 }else{
                     userRatings.setText("Not Available!!");
-                }
+                }*/
                 progressBar.setVisibility(View.INVISIBLE);
             }
 

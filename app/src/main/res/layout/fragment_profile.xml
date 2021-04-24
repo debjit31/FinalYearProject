@@ -165,7 +165,7 @@
                 </RelativeLayout>
 
                 <!--Rating-->
-                <RelativeLayout
+                <!--RelativeLayout
                     android:id="@+id/ratingsLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,13 +190,13 @@
                         android:layout_below="@+id/ratingsLabel"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="4dp"
-                        android:text="---"
+                        android:text=""
                         android:textColor="#DF6060"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
 
-                </RelativeLayout>
+                </RelativeLayout-->
 
 
             </RelativeLayout>

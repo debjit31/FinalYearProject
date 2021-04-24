@@ -83,7 +83,6 @@ public class DonateFragment extends Fragment {
     private EditText mAge, mContact, mAddress, mLandmark;
     private Spinner mBloodgGrp;
     private String bgrp;
-//    private FusedLocationProviderClient mFusedLocationPrividerClient;
 
     @Nullable
     @Override
@@ -218,33 +217,18 @@ public class DonateFragment extends Fragment {
         dbRef.child(uid).child("blood_grp").setValue(bgrp);
         dbRef.child(uid).child("contact").setValue(mContact.getText().toString());
         dbRef.child(uid).child("requestFiled").setValue("true");
-//        Toast.makeText(getActivity(), mContact.getText().toString(), Toast.LENGTH_SHORT).show();
-        Intent successIntent = new Intent(getActivity(), donor_status.class);
-        successIntent.putExtra("bloodgrp", bgrp);
-        startActivity(successIntent);
+
+        DonorStatusFragment donorStatusFragment = new DonorStatusFragment();
+        Bundle args = new Bundle();
+        args.putString("bloodgrp", bgrp);
+        donorStatusFragment.setArguments(args);
+
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, donorStatusFragment).commit();
+
 
     }
-
-    //@Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        if(requestCode == 100 && grantResults.length > 0 && (grantResults[0] + grantResults[1] == PackageManager.PERMISSION_GRANTED)){
-//            getCurrentLocation();
-//        }else{
-//            Toast.makeText(getActivity(), "Permissions are not granted!!!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
     public void register_donor(String name, String age, String address, String landmark, String fileUrl, String bgrp, String contactNo) {
         if (Integer.parseInt(age) >= 18) {
-//            mFusedLocationPrividerClient = LocationServices.getFusedLocationProviderClient(getActivity());
-//            if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-//                getCurrentLocation();
-//            }else{
-//                ActivityCompat.requestPermissions(getActivity(),
-//                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-//                                Manifest.permission.ACCESS_COARSE_LOCATION},
-//                        100);
-//            }
             String currUser = mAuth.getCurrentUser().getUid();
             DatabaseReference db1 = FirebaseDatabase.getInstance().getReference().child("donors").child(bgrp);
             HashMap<String, String> donorRequestMap = new HashMap<String, String>();
@@ -255,70 +239,27 @@ public class DonateFragment extends Fragment {
             donorRequestMap.put("contact", contactNo);
             donorRequestMap.put("address", address);
             donorRequestMap.put("landmark", landmark);
-            //donorRequestMap.put("status", "Donor");
             db1.child(currUser).setValue(donorRequestMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         progressBar.setVisibility(View.INVISIBLE);
-                        //Toast.makeText(getActivity(), "Donor Request Filed Successfully!!!", Toast.LENGTH_SHORT).show();
                         updateUser();
                         userName.setText("");
                         mAge.setText("");
                         mContact.setText("");
                         myImage.setImageResource(R.drawable.sample_image);
-                        //startActivity(new Intent(getActivity(), donor_status.class));
                     } else {
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(getActivity(), "Some Error Occurred!!!!", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-//            startActivity(new Intent(getActivity(), donor_status.class));
         } else {
             progressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(getActivity(), "You must be at least 18 years", Toast.LENGTH_LONG).show();
         }
     }
-
-//    @SuppressLint("MissingPermission")
-//    private void getCurrentLocation() {
-//        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-//        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
-//            mFusedLocationPrividerClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-//                @Override
-//                public void onComplete(@NonNull Task<Location> task) {
-//                    Location location = task.getResult();
-//                    if( location != null ){
-//                        Log.i("Latitude : ", String.valueOf(location.getLatitude()));
-//                        Log.i("Longitude : ", String.valueOf(location.getLongitude()));
-//                    }else{
-//                        final LocationRequest locationRequest = new LocationRequest()
-//                                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-//                                .setInterval(10000)
-//                                .setFastestInterval(1000)
-//                                .setNumUpdates(1);
-//                        LocationCallback locationCallback = new LocationCallback(){
-//                            @Override
-//                            public void onLocationResult(LocationResult locationResult) {
-//                                Location location1 = locationResult.getLastLocation();
-//                                Log.i("Latitude : ", String.valueOf(location1.getLatitude()));
-//                                Log.i("Longitude : ", String.valueOf(location1.getLongitude()));
-//                            }
-//                        };
-//                        mFusedLocationPrividerClient.requestLocationUpdates(locationRequest,
-//                                locationCallback, Looper.myLooper());
-//
-//                    }
-//                }
-//            });
-//        }else{
-//            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-//                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-//        }
-//
-//    }
-
     // utility function to prefetch user name from database
     public void utility() {
         progressBar.setVisibility(View.VISIBLE);

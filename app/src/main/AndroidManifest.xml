@@ -17,8 +17,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".DonorDetailsActivity"></activity>
         <activity android:name=".donor_results" />
-        <activity android:name=".donor_edit_application" />
-        <activity android:name=".donor_status" />
         <activity
             android:name=".Home"
             android:theme="@style/AppTheme.NoActionBar" />
